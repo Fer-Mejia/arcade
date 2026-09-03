@@ -18,21 +18,21 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 12px;
+  padding: 20px 0;
 }
 
 .game-card {
   background: #ffffff;
   border: 4px solid #2c3e50;
   border-radius: 20px;
-  padding: 16px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 0 4px #74b9ff;
+  padding: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 0 0 4px #74b9ff;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  width: 100%;
-  max-width: 380px; /* Se ajusta dinámicamente al ancho del celular */
+  width: 400px;
+  max-width: 95vw;
 }
 
 .game-header {
@@ -43,7 +43,7 @@ body {
 }
 
 .header-title h1 {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: #e67e22;
   text-shadow: 2px 2px 0px #f1c40f, -1px -1px 0px #d35400;
 }
@@ -51,15 +51,15 @@ body {
 .header-right {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .btn-icon {
   background: #f1f2f6;
   border: 2px solid #2c3e50;
   border-radius: 8px;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
   color: #2c3e50;
   box-shadow: 0 2px 0 #2c3e50;
@@ -72,36 +72,37 @@ body {
 
 .score-box {
   background: #f1f2f6;
-  padding: 4px 6px;
+  padding: 4px 8px;
   border-radius: 8px;
   border: 2px solid #2c3e50;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 0.4rem;
-  min-width: 55px;
+  font-size: 0.45rem;
+  min-width: 60px;
 }
 
 .score-box .label {
   color: #7f8c8d;
   margin-bottom: 2px;
-  font-size: 0.35rem;
+  font-size: 0.4rem;
 }
 
 .score-box.highlight #score {
   color: #2ecc71;
-  font-size: 0.6rem;
+  font-size: 0.65rem;
 }
 
 .score-box #highScore {
   color: #e67e22;
-  font-size: 0.6rem;
+  font-size: 0.65rem;
 }
 
 .canvas-wrapper {
   position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 1; /* Mantiene la proporción cuadrada perfecta */
+  width: 360px;
+  height: 360px;
+  max-width: 100%;
   border: 4px solid #2c3e50;
   border-radius: 12px;
   overflow: hidden;
@@ -121,7 +122,7 @@ canvas {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(44, 62, 80, 0.92);
+  background: rgba(44, 62, 80, 0.9);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -131,30 +132,30 @@ canvas {
 .overlay-content {
   text-align: center;
   color: #ffffff;
-  padding: 16px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .start-icon {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #2ecc71;
 }
 
 .death-icon {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #e74c3c;
 }
 
 .overlay h2 {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #f1c40f;
 }
 
 .overlay p {
-  font-size: 0.45rem;
+  font-size: 0.5rem;
   line-height: 1.4;
   color: #ecf0f1;
 }
@@ -164,50 +165,53 @@ canvas {
   color: #ffffff;
   border: 3px solid #2c3e50;
   font-family: var(--font-retro);
-  padding: 8px 12px;
-  font-size: 0.5rem;
+  padding: 10px 14px;
+  font-size: 0.55rem;
   border-radius: 10px;
   cursor: pointer;
-  box-shadow: 0 4px 0 #27ae60, 0 5px 0 #2c3e50;
+  box-shadow: 0 4px 0 #27ae60, 0 6px 0 #2c3e50;
   transition: all 0.15s ease;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   text-decoration: none;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
+  box-shadow: 0 6px 0 #27ae60, 0 8px 0 #2c3e50;
 }
 
 .btn-primary:active {
   transform: translateY(2px);
+  box-shadow: 0 2px 0 #27ae60, 0 4px 0 #2c3e50;
 }
 
-/* D-Pad Táctil Compacto */
+/* Controles Táctiles (D-Pad) */
 .touch-controls {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   user-select: none;
+  margin-top: 4px;
 }
 
 .dpad-row {
   display: flex;
-  gap: 4px;
+  gap: 6px;
 }
 
 .dpad-btn {
-  width: 42px;
-  height: 42px;
+  width: 46px;
+  height: 46px;
   background: #f1f2f6;
   color: #2c3e50;
   border: 3px solid #2c3e50;
-  border-radius: 8px;
-  font-size: 1rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
   cursor: pointer;
-  box-shadow: 0 3px 0 #2c3e50;
+  box-shadow: 0 4px 0 #2c3e50;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -216,7 +220,7 @@ canvas {
 }
 
 .dpad-btn:active {
-  transform: translateY(2px);
+  transform: translateY(3px);
   box-shadow: 0 1px 0 #2c3e50;
   background: #2ecc71;
   color: #ffffff;
@@ -226,9 +230,8 @@ canvas {
   text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 6px;
-  font-size: 0.38rem;
+  font-size: 0.4rem;
   color: #7f8c8d;
 }
 
@@ -239,15 +242,23 @@ canvas {
 
 .back-btn {
   background: #0984e3 !important;
-  box-shadow: 0 3px 0 #0097e6, 0 5px 0 #2c3e50 !important;
-  margin-top: 2px;
+  box-shadow: 0 4px 0 #0097e6, 0 6px 0 #2c3e50 !important;
+  margin-top: 4px;
+}
+
+.back-btn:hover {
+  background: #74b9ff !important;
+  box-shadow: 0 6px 0 #0097e6, 0 8px 0 #2c3e50 !important;
 }
 
 .hidden {
   display: none !important;
 }
-@media (min-width: 768px) {
-  .touch-controls {
-    display: none; /* Se oculta en computadoras y aparece solo en pantallas móviles */
+
+/* Ajuste de escala exacto solo para pantallas reducidas de celular */
+@media (max-width: 420px) {
+  .game-card {
+    transform: scale(0.88);
+    transform-origin: center center;
   }
 }
