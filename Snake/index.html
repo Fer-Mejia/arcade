@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🐍 Super Snake Arcade</title>
+  <title>Campeón Snake Arcade</title>
+  <link rel="icon" type="image/png" href="../favicon.png">
 
-  <!-- Google Fonts: Retro Gaming Font -->
+  <!-- Fuente Retro Pixel -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -13,81 +14,102 @@
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- Archivo CSS externo -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <main class="game-card">
-    <header class="game-header">
-      <div class="header-title">
-        <h1><i class="fa-solid fa-staff-snake"></i> SNAKE</h1>
-      </div>
+  <!-- Mueble de Madera Arcade -->
+  <div class="arcade-cabinet">
+    
+    <!-- Grabados / Detalle lateral de la madera -->
+    <div class="wood-carving-left"></div>
+    <div class="wood-carving-right"></div>
+
+    <!-- Bisel / Marco Dorado de la Pantalla CRT -->
+    <div class="crt-frame">
       
-      <div class="header-right">
-        <button id="muteBtn" class="btn-icon" title="Silenciar / Activar sonido">
-          <i id="muteIcon" class="fa-solid fa-volume-high"></i>
-        </button>
-
-        <div class="scoreboard">
-          <div class="score-box">
-            <span class="label"><i class="fa-solid fa-trophy"></i> MAX</span>
-            <span id="highScore">0</span>
+      <!-- Contenedor Principal de la Pantalla -->
+      <div class="screen-container">
+        
+        <!-- Header superior dentro de la pantalla (Marcadores) -->
+        <header class="arcade-header">
+          <div class="score-display">
+            <i class="fa-solid fa-trophy trophy-icon"></i>
+            <span class="label">MAX</span>
+            <span id="highScore" class="digital-num">0</span>
           </div>
-          <div class="score-box highlight">
-            <span class="label"><i class="fa-solid fa-star"></i> PTS</span>
-            <span id="score">0</span>
+
+          <div class="game-title">
+            <span>CAMPEÓN</span>
+            <h1>SNAKE</h1>
+          </div>
+
+          <div class="score-display">
+            <i class="fa-solid fa-star star-icon"></i>
+            <span class="label">PTS</span>
+            <span id="score" class="digital-num">0</span>
+          </div>
+        </header>
+
+        <!-- Lienzo del Juego (Canvas) -->
+        <div class="canvas-wrapper">
+          <canvas id="gameCanvas" width="400" height="340"></canvas>
+
+          <!-- Overlay de Inicio -->
+          <div id="startOverlay" class="overlay">
+            <div class="overlay-content">
+              <i class="fa-solid fa-gamepad start-icon"></i>
+              <h2>CYBER SNAKE</h2>
+              <p>Presiona para comenzar</p>
+              <button id="startBtn" class="btn-primary">
+                <i class="fa-solid fa-play"></i> INICIAR JUEGO
+              </button>
+            </div>
+          </div>
+
+          <!-- Overlay de Game Over -->
+          <div id="gameOverOverlay" class="overlay hidden">
+            <div class="overlay-content">
+              <i class="fa-solid fa-skull-crossbones death-icon"></i>
+              <h2>GAME OVER</h2>
+              <p>Puntaje final: <span id="finalScore">0</span></p>
+              <button id="restartBtn" class="btn-primary">
+                <i class="fa-solid fa-rotate-right"></i> REINICIAR
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </header>
 
-    <div class="canvas-wrapper">
-      <canvas id="gameCanvas" width="360" height="360"></canvas>
-      
-      <!-- Overlay de Inicio -->
-      <div id="startOverlay" class="overlay">
-        <div class="overlay-content">
-          <i class="fa-solid fa-worm start-icon"></i>
-          <h2>¡SUPER SNAKE!</h2>
-          <p>Usa las Flechas o WASD para moverte</p>
-          <button id="startBtn" class="btn-primary">
-            <i class="fa-solid fa-play"></i> INICIAR JUEGO
-          </button>
+        <!-- Controles Táctiles (D-Pad solo visible en móviles) -->
+        <div class="dpad-container" id="dpadContainer">
+          <button class="dpad-btn up" id="btnUp"><i class="fa-solid fa-caret-up"></i></button>
+          <div class="dpad-middle">
+            <button class="dpad-btn left" id="btnLeft"><i class="fa-solid fa-caret-left"></i></button>
+            <button class="dpad-btn right" id="btnRight"><i class="fa-solid fa-caret-right"></i></button>
+          </div>
+          <button class="dpad-btn down" id="btnDown"><i class="fa-solid fa-caret-down"></i></button>
         </div>
-      </div>
 
-      <!-- Overlay de Game Over -->
-      <div id="gameOverOverlay" class="overlay hidden">
-        <div class="overlay-content">
-          <i class="fa-solid fa-skull-crossbones death-icon"></i>
-          <h2>¡GAME OVER!</h2>
-          <p class="final-score-badge">Puntaje: <span id="finalScore">0</span></p>
-          <button id="restartBtn" class="btn-primary">
-            <i class="fa-solid fa-rotate-right"></i> REINICIAR (ENTER)
+        <!-- Footer inferior dentro de la pantalla (Instrucciones & Sonido) -->
+        <footer class="arcade-footer">
+          <div class="controls-hint">
+            Usa las <strong>FLECHAS</strong>
+          </div>
+          <button id="muteBtn" class="btn-icon" title="Silenciar / Activar sonido">
+            <i id="muteIcon" class="fa-solid fa-volume-high"></i>
           </button>
-        </div>
-      </div>
-    </div>
+          <div class="controls-hint">
+            Presiona <span class="key">R</span> para reiniciar
 
-    <!-- D-Pad Táctil (Se muestra automáticamente solo en móviles) -->
-    <section class="touch-controls">
-      <button class="dpad-btn" id="btnUp"><i class="fa-solid fa-arrow-up"></i></button>
-      <div class="dpad-row">
-        <button class="dpad-btn" id="btnLeft"><i class="fa-solid fa-arrow-left"></i></button>
-        <button class="dpad-btn" id="btnDown"><i class="fa-solid fa-arrow-down"></i></button>
-        <button class="dpad-btn" id="btnRight"><i class="fa-solid fa-arrow-right"></i></button>
-      </div>
-    </section>
+            <button class="btn-primary back-btn" onclick="location.href='../index.html'">
+                <i class="fa-solid fa-house"></i> MENU PRINCIPAL
+            </button>
+          </div>
+        </footer>
 
-    <footer class="game-controls">
-      <p><i class="fa-solid fa-gamepad"></i> Usa <span>FLECHAS</span> / <span>WASD</span> / <span>TACTIL</span></p>
-      <p><i class="fa-solid fa-keyboard"></i> <span>ENTER</span> o <span>R</span> para Reiniciar</p>
-      <a href="../index.html" class="btn-primary back-btn">
-        <i class="fa-solid fa-house"></i> MENU PRINCIPAL
-      </a>
-    </footer>
-  </main>
+      </div> <!-- fin screen-container -->
+    </div> <!-- fin crt-frame -->
+  </div> <!-- fin arcade-cabinet -->
 
   <script src="script.js"></script>
 </body>

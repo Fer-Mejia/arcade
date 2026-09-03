@@ -1,6 +1,10 @@
 :root {
-  --bg-gradient: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #6dd5ed 100%);
-  --text-dark: #2c3e50;
+  --wood-dark: #2b170c;
+  --wood-mid: #3d2112;
+  --wood-light: #522d19;
+  --gold-accent: #d4af37;
+  --gold-glow: rgba(212, 175, 55, 0.4);
+  --digital-yellow: #ffcc00;
   --font-retro: 'Press Start 2P', monospace;
 }
 
@@ -11,117 +15,156 @@
 }
 
 body {
-  background: var(--bg-gradient);
-  color: var(--text-dark);
-  font-family: var(--font-retro);
+  background-color: #110b07;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 12px;
+  font-family: var(--font-retro);
+  overflow: hidden;
 }
 
-.game-card {
-  background: #ffffff;
-  border: 4px solid #2c3e50;
-  border-radius: 20px;
-  padding: 16px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 0 4px #74b9ff;
+/* Mueble Arcade de Madera con Relieve */
+.arcade-cabinet {
+  position: relative;
+  width: 520px;
+  background: linear-gradient(135deg, #381c0e 0%, #200f07 50%, #3d2012 100%);
+  border: 12px solid #1a0b04;
+  border-radius: 28px;
+  padding: 30px 25px;
+  box-shadow: 
+    inset 0 0 30px rgba(0, 0, 0, 0.8),
+    0 25px 60px rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Grabados decorativos en los laterales de madera */
+.wood-carving-left, .wood-carving-right {
+  position: absolute;
+  top: 15%;
+  width: 20px;
+  height: 70%;
+  border-top: 2px solid rgba(212, 175, 55, 0.2);
+  border-bottom: 2px solid rgba(212, 175, 55, 0.2);
+  opacity: 0.3;
+  pointer-events: none;
+}
+.wood-carving-left { left: 8px; border-right: 2px solid rgba(212, 175, 55, 0.2); }
+.wood-carving-right { right: 8px; border-left: 2px solid rgba(212, 175, 55, 0.2); }
+
+/* Bisel dorado / Marco de la pantalla CRT */
+.crt-frame {
+  width: 100%;
+  background: linear-gradient(180deg, #5e4620 0%, #8a6a2f 30%, #4a3617 70%, #2b1d0a 100%);
+  padding: 10px;
+  border-radius: 24px;
+  box-shadow: 
+    inset 0 0 15px rgba(0, 0, 0, 0.9),
+    0 0 20px rgba(212, 175, 55, 0.25);
+  border: 2px solid #997932;
+}
+
+/* Pantalla CRT curvada en las esquinas con brillo interno */
+.screen-container {
+  background: #141f0e;
+  border-radius: 18px;
+  padding: 12px;
+  box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.95);
+  border: 4px solid #1a1208;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  width: 100%;
-  max-width: 380px;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
 }
 
-.game-header {
+/* Efecto de líneas de escaneo CRT en la pantalla */
+.screen-container::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.15) 3px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Header superior (Marcador dorado / retro) */
+.arcade-header {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: linear-gradient(180deg, rgba(35, 23, 10, 0.9) 0%, rgba(15, 10, 5, 0.9) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 10px;
+  padding: 6px 12px;
 }
 
-.header-title h1 {
+.game-title {
+  text-align: center;
+}
+.game-title span {
+  font-size: 0.45rem;
+  color: #b38f38;
+  letter-spacing: 2px;
+  display: block;
+}
+.game-title h1 {
   font-size: 0.85rem;
-  color: #e67e22;
-  text-shadow: 2px 2px 0px #f1c40f, -1px -1px 0px #d35400;
+  color: #e6c260;
+  text-shadow: 0 0 8px rgba(230, 194, 96, 0.6);
 }
 
-.header-right {
+.score-display {
   display: flex;
   align-items: center;
   gap: 6px;
+  font-size: 0.55rem;
 }
 
-.btn-icon {
-  background: #f1f2f6;
-  border: 2px solid #2c3e50;
-  border-radius: 8px;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  color: #2c3e50;
-  box-shadow: 0 2px 0 #2c3e50;
+.trophy-icon { color: #d4af37; }
+.star-icon { color: #ffcc00; }
+.label { color: #8c733f; font-size: 0.5rem; }
+
+.digital-num {
+  color: var(--digital-yellow);
+  text-shadow: 0 0 6px rgba(255, 204, 0, 0.8);
+  font-size: 0.75rem;
+  background: #0d0a02;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
-.scoreboard {
-  display: flex;
-  gap: 6px;
-}
-
-.score-box {
-  background: #f1f2f6;
-  padding: 4px 6px;
-  border-radius: 8px;
-  border: 2px solid #2c3e50;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 0.4rem;
-  min-width: 55px;
-}
-
-.score-box .label {
-  color: #7f8c8d;
-  margin-bottom: 2px;
-  font-size: 0.35rem;
-}
-
-.score-box.highlight #score {
-  color: #0984e3;
-  font-size: 0.6rem;
-}
-
-.score-box #highScore {
-  color: #e67e22;
-  font-size: 0.6rem;
-}
-
+/* Contenedor del Canvas */
 .canvas-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
-  border: 4px solid #2c3e50;
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+  border: 2px solid #2e210d;
 }
 
 canvas {
-  background: #20bf6b;
   display: block;
   width: 100%;
-  height: 100%;
+  background: #1e3314;
 }
 
+/* Overlays (Inicio / Game Over) */
 .overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(44, 62, 80, 0.75);
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(12, 18, 9, 0.92);
   backdrop-filter: blur(3px);
   display: flex;
   justify-content: center;
@@ -131,135 +174,162 @@ canvas {
 
 .overlay-content {
   text-align: center;
-  color: #2c3e50;
-  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  background: #ffffff;
-  border: 4px solid #2c3e50;
-  border-radius: 16px;
-  box-shadow: 0 8px 0 #2c3e50;
-  width: 85%;
+  gap: 10px;
 }
 
-.start-icon {
-  font-size: 2rem;
-  color: #2ecc71;
-}
-
-.death-icon {
-  font-size: 2rem;
-  color: #e74c3c;
-}
+.start-icon { font-size: 2.2rem; color: #4ade80; }
+.death-icon { font-size: 2.2rem; color: #ef4444; }
 
 .overlay h2 {
-  font-size: 0.85rem;
-  color: #2c3e50;
-}
-
-#gameOverOverlay h2 {
-  color: #c0392b;
+  color: #facc15;
+  font-size: 0.95rem;
+  text-shadow: 0 0 8px rgba(250, 204, 21, 0.5);
 }
 
 .overlay p {
-  font-size: 0.45rem;
-  line-height: 1.4;
-  color: #7f8c8d;
+  font-size: 0.55rem;
+  color: #cbd5e1;
 }
 
 .btn-primary {
-  background: #2ecc71;
-  color: #ffffff;
-  border: 3px solid #2c3e50;
+  background: linear-gradient(180deg, #22c55e 0%, #15803d 100%);
+  color: #fff;
+  border: 1px solid #4ade80;
   font-family: var(--font-retro);
-  padding: 8px 12px;
-  font-size: 0.5rem;
-  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.55rem;
+  border-radius: 6px;
   cursor: pointer;
-  box-shadow: 0 4px 0 #27ae60, 0 5px 0 #2c3e50;
-  transition: all 0.15s ease;
-  display: inline-flex;
+  transition: transform 0.15s ease;
+  display: flex;
   align-items: center;
   gap: 6px;
-  text-decoration: none;
+  margin-top: 5px;
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
+  transform: scale(1.05);
 }
 
-.btn-primary:active {
-  transform: translateY(2px);
-}
-
-/* D-Pad Táctil Compacto */
-.touch-controls {
+/* Footer de la Pantalla Arcade */
+.arcade-footer {
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  gap: 4px;
-  user-select: none;
+  padding: 4px 6px;
 }
 
-.dpad-row {
-  display: flex;
-  gap: 4px;
+.controls-hint {
+  font-size: 0.42rem;
+  color: #a38c5d;
 }
 
-.dpad-btn {
-  width: 42px;
-  height: 42px;
-  background: #f1f2f6;
-  color: #2c3e50;
-  border: 3px solid #2c3e50;
-  border-radius: 8px;
-  font-size: 1rem;
+.controls-hint strong, .controls-hint .key {
+  color: #e2c070;
+  background: #2b1f0d;
+  padding: 1px 4px;
+  border-radius: 3px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.btn-icon {
+  background: #2b1f0d;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: #d4af37;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
   cursor: pointer;
-  box-shadow: 0 3px 0 #2c3e50;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.1s ease;
-  touch-action: manipulation;
+  font-size: 0.7rem;
 }
 
-.dpad-btn:active {
-  transform: translateY(2px);
-  box-shadow: 0 1px 0 #2c3e50;
-  background: #2ecc71;
-  color: #ffffff;
-}
-
-.game-controls {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.38rem;
-  color: #7f8c8d;
-}
-
-.game-controls span {
-  color: #2c3e50;
-  font-weight: bold;
-}
-
-.back-btn {
-  background: #0984e3 !important;
-  box-shadow: 0 3px 0 #0097e6, 0 5px 0 #2c3e50 !important;
-  margin-top: 2px;
+.btn-icon.muted {
+  color: #64748b;
 }
 
 .hidden {
   display: none !important;
 }
 
-/* Ocultar flechas táctiles en laptop/PC */
-@media (min-width: 768px) {
-  .touch-controls {
-    display: none;
+.back-menu {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.back-btn {
+  padding: 10px 20px;
+  background: #222;
+  border: 2px solid #4CAF50;
+  color: #4CAF50;
+  font-family: 'Press Start 2P', cursive;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.back-btn:hover {
+  background: #4CAF50;
+  color: black;
+}
+/* Oculto por defecto en computadoras y escritorios */
+.dpad-container {
+  display: none;
+}
+
+/* Solo se activa en celulares / dispositivos táctiles (pantallas <= 768px) */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .arcade-cabinet {
+    width: 100%;
+    max-width: 480px;
+    padding: 15px 10px;
+  }
+
+  .dpad-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-top: 6px;
+    z-index: 20;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+  .dpad-middle {
+    display: flex;
+    gap: 30px;
+  }
+
+  .dpad-btn {
+    width: 46px;
+    height: 46px;
+    background: linear-gradient(180deg, #3d2112 0%, #1e0b04 100%);
+    border: 2px solid var(--gold-accent);
+    color: var(--digital-yellow);
+    border-radius: 8px;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 0 #100602, inset 0 1px 2px rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  .dpad-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #100602;
+    background: #522d19;
   }
 }
