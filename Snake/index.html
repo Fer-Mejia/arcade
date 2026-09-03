@@ -3,12 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Snake</title>
+  <title>🐍 Super Snake Arcade</title>
 
+  <!-- Google Fonts: Retro Gaming Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Archivo CSS externo -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -45,7 +50,7 @@
         <div class="overlay-content">
           <i class="fa-solid fa-worm start-icon"></i>
           <h2>¡SUPER SNAKE!</h2>
-          <p>Usa Flechas, WASD o Botones Táctiles</p>
+          <p>Usa las Flechas o WASD para moverte</p>
           <button id="startBtn" class="btn-primary">
             <i class="fa-solid fa-play"></i> INICIAR JUEGO
           </button>
@@ -59,29 +64,28 @@
           <h2>¡GAME OVER!</h2>
           <p class="final-score-badge">Puntaje: <span id="finalScore">0</span></p>
           <button id="restartBtn" class="btn-primary">
-            <i class="fa-solid fa-rotate-right"></i> REINICIAR
+            <i class="fa-solid fa-rotate-right"></i> REINICIAR (ENTER)
           </button>
         </div>
       </div>
     </div>
 
-    <!-- Controles Táctiles (D-Pad para Móvil) -->
-    <div class="touch-controls">
-      <button id="btnUp" class="dpad-btn btn-up"><i class="fa-solid fa-arrow-up"></i></button>
+    <!-- D-Pad Táctil (Se muestra automáticamente solo en móviles) -->
+    <section class="touch-controls">
+      <button class="dpad-btn" id="btnUp"><i class="fa-solid fa-arrow-up"></i></button>
       <div class="dpad-row">
-        <button id="btnLeft" class="dpad-btn btn-left"><i class="fa-solid fa-arrow-left"></i></button>
-        <button id="btnDown" class="dpad-btn btn-down"><i class="fa-solid fa-arrow-down"></i></button>
-        <button id="btnRight" class="dpad-btn btn-right"><i class="fa-solid fa-arrow-right"></i></button>
+        <button class="dpad-btn" id="btnLeft"><i class="fa-solid fa-arrow-left"></i></button>
+        <button class="dpad-btn" id="btnDown"><i class="fa-solid fa-arrow-down"></i></button>
+        <button class="dpad-btn" id="btnRight"><i class="fa-solid fa-arrow-right"></i></button>
       </div>
-    </div>
+    </section>
 
     <footer class="game-controls">
-      <p><i class="fa-solid fa-gamepad"></i> Usa <span>FLECHAS</span> / <span>WASD</span> / <span>TÁCTIL</span></p>
+      <p><i class="fa-solid fa-gamepad"></i> Usa <span>FLECHAS</span> / <span>WASD</span> / <span>TACTIL</span></p>
       <p><i class="fa-solid fa-keyboard"></i> <span>ENTER</span> o <span>R</span> para Reiniciar</p>
-
-      <button class="btn-primary back-btn" onclick="location.href='../index.html'">
+      <a href="../index.html" class="btn-primary back-btn">
         <i class="fa-solid fa-house"></i> MENU PRINCIPAL
-      </button>
+      </a>
     </footer>
   </main>
 
