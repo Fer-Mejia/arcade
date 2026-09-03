@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Super Snake Arcade</title>
-  <link rel="icon" type="image/png" href="../favicon.png">
+  <title>Snake</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,7 +45,7 @@
         <div class="overlay-content">
           <i class="fa-solid fa-worm start-icon"></i>
           <h2>¡SUPER SNAKE!</h2>
-          <p>Usa las Flechas o WASD para moverte</p>
+          <p>Usa Flechas, WASD o Botones Táctiles</p>
           <button id="startBtn" class="btn-primary">
             <i class="fa-solid fa-play"></i> INICIAR JUEGO
           </button>
@@ -60,14 +59,24 @@
           <h2>¡GAME OVER!</h2>
           <p class="final-score-badge">Puntaje: <span id="finalScore">0</span></p>
           <button id="restartBtn" class="btn-primary">
-            <i class="fa-solid fa-rotate-right"></i> REINICIAR (ENTER)
+            <i class="fa-solid fa-rotate-right"></i> REINICIAR
           </button>
         </div>
       </div>
     </div>
 
+    <!-- Controles Táctiles (D-Pad para Móvil) -->
+    <div class="touch-controls">
+      <button id="btnUp" class="dpad-btn btn-up"><i class="fa-solid fa-arrow-up"></i></button>
+      <div class="dpad-row">
+        <button id="btnLeft" class="dpad-btn btn-left"><i class="fa-solid fa-arrow-left"></i></button>
+        <button id="btnDown" class="dpad-btn btn-down"><i class="fa-solid fa-arrow-down"></i></button>
+        <button id="btnRight" class="dpad-btn btn-right"><i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </div>
+
     <footer class="game-controls">
-      <p><i class="fa-solid fa-gamepad"></i> Usa <span>FLECHAS</span> o <span>WASD</span> para moverte</p>
+      <p><i class="fa-solid fa-gamepad"></i> Usa <span>FLECHAS</span> / <span>WASD</span> / <span>TÁCTIL</span></p>
       <p><i class="fa-solid fa-keyboard"></i> <span>ENTER</span> o <span>R</span> para Reiniciar</p>
 
       <button class="btn-primary back-btn" onclick="location.href='../index.html'">
