@@ -254,11 +254,3 @@ canvas {
 .hidden {
   display: none !important;
 }
-
-/* Ajuste de escala exacto solo para pantallas reducidas de celular */
-@media (max-width: 420px) {
-  .game-card {
-    transform: scale(0.88);
-    transform-origin: center center;
-  }
-}
