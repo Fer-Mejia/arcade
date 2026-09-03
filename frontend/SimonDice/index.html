@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simón Dice</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="game-card">
+    <header class="game-header">
+      <h1><i class="fa-solid fa-gamepad"></i> SIMÓN DICE</h1>
+      <div class="scoreboard">
+        <div class="score-box">
+          <span class="label"><i class="fa-solid fa-trophy"></i> MAX</span>
+          <span id="highscore">0</span>
+        </div>
+        <div class="score-box highlight">
+          <span class="label"><i class="fa-solid fa-star"></i> PTS</span>
+          <span id="score">0</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="board">
+      <div class="simon-grid">
+        <div class="pad green" id="pad-0" data-color="0"></div>
+        <div class="pad red" id="pad-1" data-color="1"></div>
+        <div class="pad yellow" id="pad-2" data-color="2"></div>
+        <div class="pad blue" id="pad-3" data-color="3"></div>
+        
+        <button class="center-btn" id="startBtn">
+          <span id="centerText">INICIAR</span>
+        </button>
+      </div>
+    </div>
+
+    <footer class="game-footer">
+      <p class="instructions"><i class="fa-solid fa-hand-pointer"></i> Repite la secuencia de colores</p>
+      <p id="gameOverMsg" class="game-over hidden"><i class="fa-solid fa-triangle-exclamation"></i> ¡PERDISTE! Clic al centro para reiniciar</p>
+      
+      <button class="btn-primary back-btn" onclick="location.href='../index.html'">
+        <i class="fa-solid fa-house"></i> MENU PRINCIPAL
+      </button>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

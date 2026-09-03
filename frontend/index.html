@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Mini Arcade </title>
+  
+  <!-- Google Fonts: Retro Gaming Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+  <main class="menu-card">
+    <header class="menu-header">
+      <i class="fa-solid fa-gamepad header-icon"></i>
+      <h1>MINI ARCADE</h1>
+      <p class="subtitle">SELECCIONA UN JUEGO</p>
+    </header>
+
+    <nav class="game-list">
+      <button class="menu-btn btn-snake" onclick="location.href='Snake/index.html'">
+        <span>SNAKE</span>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+      </button>
+
+      <button class="menu-btn btn-flappy" onclick="location.href='FlappyBird/index.html'">
+        <span>FLAPPY BIRD</span>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+      </button>
+
+      <button class="menu-btn btn-simon" onclick="location.href='SimonDice/index.html'">
+        <span>SIMÓN DICE</span>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+      </button>
+    </nav>
+
+    <footer class="menu-footer">
+      <p><i class="fa-solid fa-star"></i> COLECCIÓN RETRO <i class="fa-solid fa-star"></i></p>
+    </footer>
+  </main>
+
+</body>
+</html>

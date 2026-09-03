@@ -1,0 +1,146 @@
+:root {
+  --bg-gradient: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #6dd5ed 100%);
+  --text-dark: #2c3e50;
+  --font-retro: 'Press Start 2P', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-gradient);
+  color: var(--text-dark);
+  font-family: var(--font-retro);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.menu-card {
+  background: #ffffff;
+  border: 4px solid #2c3e50;
+  border-radius: 20px;
+  padding: 28px 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 0 0 4px #74b9ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 380px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.menu-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-icon {
+  font-size: 2.5rem;
+  color: #f1c40f;
+  text-shadow: 3px 3px 0 #d35400;
+  animation: bounce 1.2s infinite alternate ease-in-out;
+}
+
+h1 {
+  font-size: 1.15rem;
+  color: #e67e22;
+  text-shadow: 2px 2px 0px #f1c40f, -1px -1px 0px #d35400;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  font-size: 0.45rem;
+  color: #7f8c8d;
+  letter-spacing: 1px;
+}
+
+.game-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.menu-btn {
+  width: 100%;
+  background: #f1f2f6;
+  color: #2c3e50;
+  border: 3px solid #2c3e50;
+  font-family: var(--font-retro);
+  padding: 14px 16px;
+  font-size: 0.65rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 0 #2c3e50;
+}
+
+.menu-btn span {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.menu-btn .arrow {
+  font-size: 0.6rem;
+  opacity: 0.5;
+  transition: transform 0.15s ease;
+}
+
+/* Efectos de Hover */
+.btn-snake:hover {
+  background: #2ecc71;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #27ae60, 0 8px 0 #2c3e50;
+}
+
+.btn-flappy:hover {
+  background: #f1c40f;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #d35400, 0 8px 0 #2c3e50;
+}
+
+.btn-simon:hover {
+  background: #0984e3;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #0984e3, 0 8px 0 #2c3e50;
+}
+
+.menu-btn:hover .arrow {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+.menu-footer {
+  font-size: 0.45rem;
+  color: #7f8c8d;
+  margin-top: 4px;
+}
+
+.menu-footer i {
+  color: #f1c40f;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-8px); }
+}
